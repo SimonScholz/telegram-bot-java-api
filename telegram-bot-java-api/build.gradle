@@ -5,11 +5,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.projectlombok:lombok:1.16.18'
-	
+
 	api 'com.squareup.retrofit2:retrofit:2.3.0'
+
 	implementation 'com.jakewharton.retrofit:retrofit2-reactor-adapter:2.1.0'
 	implementation 'com.squareup.retrofit2:converter-jackson:2.3.0'
+	implementation 'org.projectlombok:lombok:1.16.18'
 
     testImplementation 'junit:junit:4.12'
 }
