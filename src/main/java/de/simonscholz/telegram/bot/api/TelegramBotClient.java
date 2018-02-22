@@ -19,7 +19,21 @@ import retrofit2.http.Query;
 
 public interface TelegramBotClient {
 
-	static TelegramBotClient createRxJson(String baseUrl, String botToken) {
+	/**
+	 * This method creates a TelegramBotClient instance with the given parameters
+	 * and uses the {@link JacksonConverterFactory} for converting JSON to POJOs and
+	 * the {@link ReactorCallAdapterFactory} to get io reactor types as return
+	 * values.
+	 * 
+	 * @param baseUrl
+	 *            url of the bot api, usually https://api.telegram.org/bot
+	 * @param botToken
+	 *            the secret token for the bot, which can be obtained from BotFather
+	 * @return
+	 * 
+	 * @see https://core.telegram.org/bots/api#authorizing-your-bot
+	 */
+	static TelegramBotClient createReactorJson(String baseUrl, String botToken) {
 		Builder builder = new Retrofit.Builder().addConverterFactory(JacksonConverterFactory.create())
 				.addCallAdapterFactory(ReactorCallAdapterFactory.create());
 
