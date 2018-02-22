@@ -17,12 +17,12 @@ public final class TelegramHelper {
 	public static Mono<Message> getMessage(Update update) {
 		if (update.getMessage() != null) {
 			return Mono.just(update.getMessage());
-		} else if (update.getEditedMessage() != null) {
-			return Mono.just(update.getEditedMessage());
-		} else if (update.getChannelPost() != null) {
-			return Mono.just(update.getChannelPost());
-		} else if (update.getEditedChannelPost() != null) {
-			return Mono.just(update.getEditedChannelPost());
+		} else if (update.getEdited_message() != null) {
+			return Mono.just(update.getEdited_message());
+		} else if (update.getChannel_post() != null) {
+			return Mono.just(update.getChannel_post());
+		} else if (update.getEdited_channel_post() != null) {
+			return Mono.just(update.getEdited_channel_post());
 		}
 
 		return Mono.empty();

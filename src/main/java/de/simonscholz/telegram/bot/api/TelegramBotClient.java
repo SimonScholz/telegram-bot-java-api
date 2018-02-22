@@ -33,7 +33,7 @@ public interface TelegramBotClient {
 	 * 
 	 * @see https://core.telegram.org/bots/api#authorizing-your-bot
 	 */
-	static TelegramBotClient createReactorJson(String baseUrl, String botToken) {
+	static TelegramBotClient createReactorJackson(String baseUrl, String botToken) {
 		Builder builder = new Retrofit.Builder().addConverterFactory(JacksonConverterFactory.create())
 				.addCallAdapterFactory(ReactorCallAdapterFactory.create());
 
