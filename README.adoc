@@ -1,0 +1,47 @@
+= Telegram Bot Java API
+
+This library contains the bot api and a retrofit client with a Jackson converter to get the data.
+
+The domain objects are configured to work properly with Jackson, but should also work fine using GSON.
+
+Jackson is used by default by the Spring framework so it works very well in a Spring or Spring Boot environment.
+
+See https://github.com/SimonScholz/telegram-bot-spring-dmi-wheater and my other telegram repositories for examples.
+
+== How to use the API
+
+You can create a TelegramBotClient instance like this:
+
+[source, java]
+----
+String apiUrl = "https://api.telegram.org/bot";
+String botToken = "*** your bot api token ***";
+
+TelegramBotClient.createReactorJson(apiUrl, botToken);
+
+----
+
+*** your bot api token *** can be obtained from the BotFahther bot.
+
+See https://core.telegram.org/bots/api#authorizing-your-bot
+
+In a Spring environment the url and token can be saved as environment variables and be obtained in a configuration class, which creates a TelegramBotClient bean like this:
+
+[source, java]
+----
+	@Bean
+	public TelegramBotClient getTelegramBotClientDmiWeather(@Value("${bot.api.url}") String apiUrl,
+			@Value("${bot.dmiweather.token}") String botToken) {
+		return TelegramBotClient.createReactorJson(apiUrl, botToken);
+	}
+----
+
+== Contributing
+
+Feedback is highly appreciated and pull requests are appreciated even more.
+
+I know this library does not contain all domain objects and not all API methods, but it fits for the needs of my Telegram bots. 
+
+So please feel free to ask for enhancements or offer pull requeusts for missing features.
+
+
