@@ -1,15 +1,20 @@
 package de.simonscholz.telegram.bot.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Update {
-	private int update_id;
+	@JsonProperty(value = "update_id")
+	private int updateId;
 	private Message message;
-	private Message edited_message;
-	private Message channel_post;
-	private Message edited_channel_post;
+	@JsonProperty(value = "edited_message")
+	private Message editedMessage;
+	@JsonProperty(value = "channel_post")
+	private Message channelPost;
+	@JsonProperty(value = "edited_channel_post")
+	private Message editedChannelPost;
 }
