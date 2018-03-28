@@ -17,6 +17,7 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.16.18'
 
 	testImplementation 'junit:junit:4.12'
+	testImplementation 'io.projectreactor:reactor-test:3.1.5.RELEASE'
 }
 
 group = 'telegram-bot'
