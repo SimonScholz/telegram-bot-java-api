@@ -79,10 +79,10 @@ public class Message {
 	private List<PhotoSize> newChatPhoto;
 
 	@JsonProperty(value = "delete_chat_photo")
-	private boolean deleteChatPhoto = true;
+	private boolean deleteChatPhoto;
 
 	@JsonProperty(value = "group_chat_created")
-	private boolean groupChatCreated = true;
+	private boolean groupChatCreated;
 
 	@JsonProperty(value = "supergroup_chat_created")
 	private boolean supergroupChatCreated;
