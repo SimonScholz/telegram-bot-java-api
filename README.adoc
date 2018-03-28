@@ -1,4 +1,6 @@
-= Telegram Bot Java API
+= Telegram Bot Java API 
+
+image:https://travis-ci.org/SimonScholz/telegram-bot-java-api.svg?branch=master["Build Status", link="https://travis-ci.org/SimonScholz/telegram-bot-java-api"]
 
 This library contains the bot api and a retrofit client with a Jackson converter to get the data.
 
