@@ -1,0 +1,18 @@
+= Contributing to Telegram Bot Java API
+
+If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.
+
+Feedback is highly appreciated and pull requests are appreciated even more.
+
+I know this library does not contain all domain objects and not all API methods, but it fits for the needs of my Telegram bots. 
+
+So please feel free to ask for enhancements or offer pull requeusts for missing features.
+
+When submitting code, please make every effort to follow existing conventions and style in order to keep the code as readable as possible.
+
+= Useful links
+
+* https://core.telegram.org/bots/api - The bot API documentation of telegram
+
+* http://www.vogella.com/tutorials/Retrofit/article.html - Tutorial for Retrofit, which is used to the `TelegramBotClient`
+
