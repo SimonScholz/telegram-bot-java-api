@@ -2,6 +2,7 @@ plugins {
     id 'com.jfrog.bintray' version '1.7.3'
     id 'maven-publish'
     id 'java-library'
+    id 'jacoco'
 }
 
 repositories {
@@ -15,7 +16,7 @@ dependencies {
 	implementation 'com.squareup.retrofit2:converter-jackson:2.3.0'
 	implementation 'org.projectlombok:lombok:1.16.18'
 
-    testImplementation 'junit:junit:4.12'
+	testImplementation 'junit:junit:4.12'
 }
 
 group = 'telegram-bot'
@@ -82,3 +83,14 @@ publishing {
         }
     }
 }
+
+// Jacoco and code coverage setup
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport
