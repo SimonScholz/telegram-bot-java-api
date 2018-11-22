@@ -1,5 +1,6 @@
 plugins {
-    id 'com.jfrog.bintray' version '1.7.3'
+    id 'com.jfrog.bintray' version '1.8.4'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
     id 'maven-publish'
     id 'java-library'
     id 'jacoco'
@@ -11,36 +12,30 @@ repositories {
 }
 
 dependencies {
-	api 'com.squareup.retrofit2:retrofit:2.3.0'
-
-	implementation 'com.jakewharton.retrofit:retrofit2-reactor-adapter:2.1.0'
-	implementation 'com.squareup.retrofit2:converter-jackson:2.3.0'
-	implementation 'org.projectlombok:lombok:1.16.20'
+	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.7'
 
 	testImplementation 'junit:junit:4.12'
-	testImplementation 'io.projectreactor:reactor-test:3.1.5.RELEASE'
 }
 
 group = 'telegram-bot'
-version = '0.1.0-SNAPSHOT'
+version = '0.1.1'
 
 bintray {
 	user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
 	key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-	publications = ['telegram-bot-java-api']
+	publications = ['TelegramBotApiPublication']
 	publish = true
 	pkg {
 		repo = 'telegram-bot'
 		name = 'telegram-bot-java-api'
 		licenses = ['EPL-2.0']
 		vcsUrl = 'git@github.com:SimonScholz/telegram-bot-java-api.git'
-		githubRepo = 'https://github.com/SimonScholz/telegram-bot-java-api'
 		publicDownloadNumbers = true
 		version {
-        	name = "${version}"
+        	name = "${project.version}"
         	desc = 'This repo contains java artifacts to implement bot for the telegram messenger'
         	released  = new Date()
-        	vcsTag = "${version}"
+        	vcsTag = "${project.version}"
  	   }
 	}
 }
@@ -70,11 +65,11 @@ def pomConfig = {
 // Create the publication with the pom configuration:
 publishing {
     publications {
-        MyPublication(MavenPublication) {
+        TelegramBotApiPublication(MavenPublication) {
             from components.java
             groupId 'telegram-bot'
             artifactId 'telegram-bot-java-api'
-            version "${version}"
+            version "${project.version}"
             pom.withXml {
                 def root = asNode()
                 root.appendNode('description', 'This repo contains java artifacts to implement bot for the telegram messenger')
@@ -100,4 +95,8 @@ check.dependsOn jacocoTestReport
 // checkstyle setup
 checkstyle {
     configFile file("checkstyle.xml")
+}
+
+wrapper {
+	gradleVersion = '4.10.2'
 }
